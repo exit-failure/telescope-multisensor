@@ -1,30 +1,32 @@
 //defines
 #define _VERSION_ "0.1"
 
+#define PIN_RESET 7
+#define PIN_ENABLE 8
+#define PIN_D4 9
+#define PIN_D5 10
+#define PIN_D6 11
+#define PIN_D7 12
+#define PIN_BACKLIGHT A1
+#define PIN_CONTRAST A2
+
+#define BACKLIGHT_POLARITY POSITIVE
+
+#define ROW_COUNT 2
+#define COLUMN_COUNT 16
+
 //libs
 #include <Arduino.h>
 #include <LiquidCrystal.h>
 #include "LCDControl.h"
 
 //constants
- LCDControl lcd(7, 8, 9, 10, 11, 12, 2, 16);
+LCDControl lcd(PIN_RESET, PIN_ENABLE, PIN_D4, PIN_D5, PIN_D6, PIN_D7, PIN_BACKLIGHT, BACKLIGHT_POLARITY, PIN_CONTRAST, ROW_COUNT, COLUMN_COUNT);
 
-/*
-LCD RS pin to digital pin 7
-LCD Enable pin to digital pin 8
-LCD D4 pin to digital pin 9
-LCD D5 pin to digital pin 10
-LCD D6 pin to digital pin 11
-LCD D7 pin to digital pin 12
-LCD R/W pin to ground
-LCD VSS pin to ground
-LCD VCC pin to 5V
-10K resistor:
-ends to +5V and ground
-wiper to LCD VO pin (pin 3)
- */
 
 void setup() {
+    lcd.printLineToLCD(0, 1, "Telescope Tools");
+    lcd.printLineToLCD(0, 1, "HKraft     v0.1");
 }
 
 void loop() {

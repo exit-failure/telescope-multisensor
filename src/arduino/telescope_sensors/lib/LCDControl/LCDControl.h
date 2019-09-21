@@ -8,24 +8,43 @@
 #include <Arduino.h>
 #include <LiquidCrystal.h>
 
-class LCDControl:LiquidCrystal {
+class LCDControl: public LiquidCrystal {
+    
+    //class variables
+    public:
+        enum Alignment {left, right, center};
+    private:
+        //LiquidCrystal _lcd;
+        uint8_t _rows, _columns, _contrastPin;
+
+
     //functions
 
     /*
-    * Sum numbers in a vector.
+    * Constructs a LCDControl object
     *
-    * @param lcd the display to write to
-    * @return this finction does not return
+    * @param    reset           DIGITAL pin connected to RS
+    * @param    enable           DIGITAL pin connected to E
+    * @param    D4              DIGITAL pin connected to D4
+    * @param    D5              DIGITAL pin connected to D5
+    * @param    D6              DIGITAL pin connected to D6
+    * @param    D7              DIGITAL pin connected to D7
+    * @param    backlightPin    PWM pin connected to V0
+    * @param    polarity        polarity of the backlight (POSTIVE/NEGATIVE)
+    * @param    contrastPin     PWM pin connected to V0
+    * @param    rows            number of rows the display has
+    * @param    columns         number of columns the display has
+    * @return                   nothing (constructor)
     */
     public:
-        LCDControl();
-        LCDControl(int RS, int ENABLE, int D4, int D5, int D6, int D7, int rows, int columns);
-        void printLineToLCD(byte line, byte start, String text);
+        LCDControl(uint8_t reset, uint8_t enable, uint8_t D4, uint8_t D5, uint8_t D6, uint8_t D7,
+            uint8_t backlightPin, t_backlightPol polarity, uint8_t contrastPin, uint8_t rows, uint8_t columns);
+        void printLineToLCD(uint8_t line, uint8_t start, String text);
+        void printToLCDAligned(uint8_t line, Alignment align, String text);
 
 
-    //class variables
-    private:
-        LiquidCrystal _lcd;
-        int _rows, _columns;
+    
+
+
 
 }; //class LCDControl
