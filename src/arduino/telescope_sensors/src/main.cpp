@@ -25,11 +25,13 @@ LCDControl lcd(PIN_RESET, PIN_ENABLE, PIN_D4, PIN_D5, PIN_D6, PIN_D7, PIN_BACKLI
 
 
 void setup() {
-    lcd.printLineToLCD(0, 1, "Telescope Tools");
-    lcd.printLineToLCD(0, 1, "HKraft     v0.1");
+    lcd.printToLCD(0, 1, "Telescope Tools");
+    lcd.printToLCDAligned(0, LCDControl::Alignment::left, "HKraft");
 }
 
 void loop() {
+
+    //TODO
 }
 
 
