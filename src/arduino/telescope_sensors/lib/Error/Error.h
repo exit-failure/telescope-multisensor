@@ -15,4 +15,4 @@ struct ErrorType{
 
 
 
-#endif
+#endif //ERROR_H

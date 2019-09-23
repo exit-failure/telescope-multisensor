@@ -1,8 +1,8 @@
-#ifndef LCDCONTRH_H
-#define LCDCONTRH_H
+#ifndef LCDCONTROL_H
+#define LCDCONTROL_H
 
 
-#define _VERSION_ "0.1"
+#define _LCDCONTROL_VERSION_ "0.1"
 
 //Set the number of lines and columns of your LCD. Set to 
 #define LCD_LINES 2
@@ -12,6 +12,7 @@
 #include <Arduino.h>
 #include <LiquidCrystal.h>
 #include "Error.h"
+#include "Config.h"
 
 class LCDControl: public LiquidCrystal {
     //tes
@@ -20,7 +21,7 @@ class LCDControl: public LiquidCrystal {
         enum Alignment {left, right, center};
     private:
         //LiquidCrystal _lcd;
-        uint8_t _rows, _columns, _contrastPin;
+        Config &_config;
 
 
     //functions
@@ -42,11 +43,11 @@ class LCDControl: public LiquidCrystal {
     * @return                   nothing (constructor)
     */
     public:
-        LCDControl(uint8_t reset, uint8_t enable, uint8_t D4, uint8_t D5, uint8_t D6, uint8_t D7,
-            uint8_t backlightPin, t_backlightPol polarity, uint8_t contrastPin, uint8_t rows, uint8_t columns);
-        void printToLCD(uint8_t line, uint8_t start, const String &text);
-        void printToLCDAligned(uint8_t line, Alignment align, const String &text);
-        void printError(const ErrorType error);
+        LCDControl(Config &config);
+        //LCDControl(uint8_t reset, uint8_t enable, uint8_t D4, uint8_t D5, uint8_t D6, uint8_t D7, uint8_t backlightPin, t_backlightPol polarity, uint8_t contrastPin, uint8_t rows, uint8_t columns);
+        void printToLCD(uint8_t row, uint8_t column, const String &text);
+        void printToLCDAligned(uint8_t row, Alignment align, const String &text);
+        void printError(const ErrorType &error);
         
 
     
@@ -54,4 +55,4 @@ class LCDControl: public LiquidCrystal {
 
 
 }; //class LCDControl
-#endif
+#endif //LCDCONTROL_H
