@@ -12,7 +12,4 @@ struct ErrorType{
 
 #define ERR_LINE_OVERFLOW ErrorType(100, "display overflow")
 
-
-
-
 #endif //ERROR_H

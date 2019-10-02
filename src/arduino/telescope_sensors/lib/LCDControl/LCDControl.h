@@ -10,17 +10,15 @@
 
 
 #include <Arduino.h>
-#include <LiquidCrystal.h>
-#include "Error.h"
 #include "Config.h"
+#include "LiquidCrystal.h"
+#include "Error.h"
+
 
 class LCDControl: public LiquidCrystal {
-    //tes
-    //class variables
     public:
         enum Alignment {left, right, center};
     private:
-        //LiquidCrystal _lcd;
         Config &_config;
 
 
